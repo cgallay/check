@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(
-    name="check"",
+    name="check",
     version="0.1",
     description="Python lib to check argument pass to a function at run time.",
     url="https://github.com/cgallay/check",
