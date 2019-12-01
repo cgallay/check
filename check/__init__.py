@@ -1,1 +1,1 @@
-from check import arg
+from .check import arg
