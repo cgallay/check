@@ -28,7 +28,10 @@ def arg(_func=None, *, name, vtype, doc=""):
     else:
         return decorator(_func)
 
-    
+
 def print_help(func):
+    print("Docs:")
+    print("Arguments:")
     for arg in func._args:
-        print(arg['name'])
+        print(f"\t{arg['name']} : {arg['help']}")
+    print("Returns:")
