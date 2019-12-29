@@ -5,14 +5,20 @@ import inspect
 def arg(_func=None, *, name, vtype, doc=""):
     def decorator(func):
         metadata = {"name": name, "vtype": vtype, "help": doc}
-        if hasattr(func, '_args'):
+        if hasattr(func, "_args"):
             func._args.append(metadata)
         else:
             func._args = [metadata]
+
         @functools.wraps(func)
         def wrapper(*args, **kwargs):
             sign = inspect.signature(func)
-            d = dict(zip([parm for parm in sign.parameters], args))
+            d = {
+                    k: p.default
+                    for k, p in inspect.signature(func).parameters.items()
+                    if p.default is not inspect.Parameter.empty
+                }
+            d.update(dict(zip([parm for parm in sign.parameters], args)))
             d.update(kwargs)
             v_to_check = d[name]
 
