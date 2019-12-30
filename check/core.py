@@ -39,5 +39,6 @@ def print_help(func):
     print("Docs:")
     print("Arguments:")
     for arg in func._args:
-        print(f"\t{arg['name']} : {arg['help']}")
+        print(f"\t{arg['name']} ({arg['vtype']}):")
+        print(f"\t\t{arg['help']}")
     print("Returns:")
