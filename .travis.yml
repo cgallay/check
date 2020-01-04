@@ -7,10 +7,11 @@ python:
 # command to install dependencies
 install:
   - pip install -e .
-  - pip install python-coveralls
+  - pip install pytest-cov
+  - pip install coveralls
   - pip install -r requirements.txt
 # command to run tests
 script:
-  - pytest
+  - pytest --cov=check/
 after_success:
   - coveralls
