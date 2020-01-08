@@ -13,7 +13,7 @@ class Type:
 class Choice(Type):
     def __init__(self, allow_values):
         self.allow_values = allow_values
-        self.error_msg = "can onlu be part of {self.allow_values}"
+        self.error_msg = f"can only be part of {self.allow_values}"
 
     def __comply__(self, value, arg_name):
         return value in self.allow_values
